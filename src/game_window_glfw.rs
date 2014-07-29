@@ -59,11 +59,10 @@ impl GameWindowGLFW {
 
         // Initialize GLFW.
         let glfw = glfw::init(glfw::FAIL_ON_ERRORS).unwrap();
+        glfw.window_hint(glfw::ContextVersion(3, 2));
+        glfw.window_hint(glfw::OpenglProfile(glfw::OpenGlCoreProfile));
+        glfw.window_hint(glfw::OpenglForwardCompat(true));
 
-        // Make sure we have the right GL version.
-        glfw.window_hint(glfw::ContextVersion(3, 3));
-
-        // Create GLFW window.
         let (window, events) = glfw.create_window(
             settings.size[0],
             settings.size[1],
